@@ -1,0 +1,16 @@
+body {
+  background-color: black;
+  color: white;
+}
+
+main {
+  width: 300px;
+  margin: 50px auto 0;
+}
+
+.board {
+  display: grid;
+  border: 2px solid white;
+  grid-template-columns: repeat(3, 1fr);
+  grid-template-rows: repeat(3, 1fr);
+}
