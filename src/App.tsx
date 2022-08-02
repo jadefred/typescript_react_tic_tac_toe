@@ -21,7 +21,18 @@ function App() {
 
   useEffect(() => {
     const isComputerTurn: boolean = square.filter((square) => square !== null).length % 2 === 1;
-    const putComputerAt = (index: number | null): void => {
+    const lineThatsAre = (a: string, b: string, c: string) => {
+      return lines.filter((squareIndexes) => {
+        const squareValues = squareIndexes.map((index) => {
+          return square[index];
+        });
+        return JSON.stringify([a, b, c].sort()) === JSON.stringify(squareValues.sort());
+      });
+    };
+    const playerWon = lineThatsAre("x", "x", "x").length > 0;
+    if (playerWon) alert("player won");
+
+    const putComputerAt = (index: number): void => {
       let newSquare = square;
       if (index !== null) {
         newSquare[index] = "o";
@@ -29,7 +40,6 @@ function App() {
       }
     };
     if (isComputerTurn) {
-      console.log("is computer");
       //first map out the array of square, and mark all available index, null for the taken square
       //then filter the array, filer away the null (the taken squares)
       const emptyIndexes = square
@@ -37,21 +47,21 @@ function App() {
           return i === null ? index : null;
         })
         .filter((value) => value !== null);
-
       //generate random index by using the information of emptyIndexes
-      const randomIndex = emptyIndexes[Math.ceil(Math.random() * emptyIndexes.length)];
-
+      const randomIndex = emptyIndexes[Math.floor(Math.random() * emptyIndexes.length)];
       //call function is assign computer move
-      putComputerAt(randomIndex);
+      if (randomIndex || randomIndex === 0) putComputerAt(randomIndex);
     }
   }, [square]);
 
   function handleSquareClick(index: number) {
     //when the left over squares (null) can be completely divided by 2, it means is player's turn
     const isPlayTurn: boolean = square.filter((square) => square !== null).length % 2 === 0;
+
     //when player click the square, show x and update array of square
     if (isPlayTurn) {
       console.log("is player");
+      console.log(isPlayTurn, "is player turn");
       let newSquare = square;
       newSquare[index] = "x";
       setSquare([...newSquare]);
