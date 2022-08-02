@@ -89,6 +89,14 @@ function App() {
     }
   }, [square, winner]);
 
+  //if none of the square is null and still have no winner, set it as tie
+  useEffect(() => {
+    const isTied = square.filter((i) => i === null);
+    if (isTied.length === 0 && !winner) {
+      setWinner("tie");
+    }
+  }, [square, winner]);
+
   function handleSquareClick(index: number) {
     //when the left over squares (null) can be completely divided by 2, it means is player's turn
     const isPlayTurn: boolean = square.filter((square) => square !== null).length % 2 === 0;
@@ -109,8 +117,9 @@ function App() {
           <Square key={index} x={square === "x" ? 1 : 0} o={square === "o" ? 1 : 0} onClick={() => handleSquareClick(index)} />
         ))}
       </Board>
-        {winner && winner === "x" && <div className="result win">You won ! </div>}
-        {winner && winner === "o" && <div className="result lose">You lost ! </div>}
+      {winner && winner === "x" && <div className="result win">You won ! </div>}
+      {winner && winner === "o" && <div className="result lose">You lost ! </div>}
+      {winner && winner === "tie" && <div className="result tie">Tied ! </div>}
     </main>
   );
 }
