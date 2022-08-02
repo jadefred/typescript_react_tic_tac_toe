@@ -94,7 +94,7 @@ function App() {
     const isPlayTurn: boolean = square.filter((square) => square !== null).length % 2 === 0;
 
     //when player click the square, show x and update array of square
-    if (isPlayTurn && !winner) {
+    if (isPlayTurn && !winner && !square[index]) {
       let newSquare = square;
       newSquare[index] = "x";
       setSquare([...newSquare]);
