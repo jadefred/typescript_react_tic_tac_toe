@@ -23,7 +23,7 @@ function App() {
     //take x / o / null as arguments
     //filter all mini arrays if there's any filled square matched with the lines
     //return the matched line with its indexes as result
-    const lineThatsAre = (a: string, b: string, c: string | null) => {
+    const lineThatsAre = (a: string, b: string | null, c: string | null) => {
       return lines.filter((squareIndexes) => {
         const squareValues = squareIndexes.map((index) => {
           return square[index];
@@ -54,7 +54,9 @@ function App() {
       .filter((value) => value !== null);
 
     if (isComputerTurn) {
-      //if computer already has a line which it occopied 2 squares, it will try to take the last one
+      //Logic of computer move
+
+      //1 - if computer already has a line which it occopied 2 squares, it will try to take the last one
       const winningLines = lineThatsAre("o", "o", null);
       if (winningLines.length > 0) {
         //will receive the line gonna win as array, then filter the occupied sqaure
@@ -63,11 +65,19 @@ function App() {
         return;
       }
 
-      //compuer try to block the player when players has took 2 squares in the line
+      //2 - computer try to block the player when players has took 2 squares in the line
       const blockPlayer = lineThatsAre("x", "x", null);
       if (blockPlayer.length > 0) {
         const blockIndex = blockPlayer[0].filter((index) => square[index] === null)[0];
         putComputerAt(blockIndex);
+        return;
+      }
+
+      //3 - try to continue on the line which has chance to win
+      const linesToContinue = lineThatsAre("o", null, null);
+      if (linesToContinue.length > 0) {
+        const continueIndex = linesToContinue[0].filter((index) => square[index] === null)[0];
+        putComputerAt(continueIndex);
         return;
       }
 
