@@ -23,3 +23,16 @@ main {
   font-size: 4rem;
   text-align: center;
 }
+
+.result {
+  font-size: 2rem;
+  padding: 10px;
+}
+
+.win {
+  background-color: green;
+}
+
+.lose {
+  background-color: red;
+}

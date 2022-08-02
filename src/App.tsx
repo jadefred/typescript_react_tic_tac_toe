@@ -18,6 +18,7 @@ const lines: number[][] = [
 
 function App() {
   const [square, setSquare] = useState(defaultSquare);
+  const [winner, setWinner] = useState<string | null>(null);
 
   useEffect(() => {
     //take x / o / null as arguments
@@ -33,8 +34,8 @@ function App() {
     };
     const playerWon = lineThatsAre("x", "x", "x").length > 0;
     const computerWon = lineThatsAre("o", "o", "o").length > 0;
-    if (playerWon) alert("player won");
-    if (computerWon) alert("computer won");
+    if (playerWon) setWinner("x");
+    if (computerWon) setWinner("o");
 
     const isComputerTurn: boolean = square.filter((square) => square !== null).length % 2 === 1;
     const putComputerAt = (index: number): void => {
@@ -107,6 +108,8 @@ function App() {
           <Square key={index} x={square === "x" ? 1 : 0} o={square === "o" ? 1 : 0} onClick={() => handleSquareClick(index)} />
         ))}
       </Board>
+      {winner && winner === "x" && <div className="result win">You won ! </div>}
+      {winner && winner === "o" && <div className="result lose">You lost ! </div>}
     </main>
   );
 }
