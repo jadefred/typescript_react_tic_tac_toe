@@ -54,9 +54,9 @@ function App() {
       })
       .filter((value) => value !== null);
 
-    if (isComputerTurn) {
+    //Computer make a move after player made one and no winner
+    if (isComputerTurn && !winner) {
       //Logic of computer move
-
       //1 - if computer already has a line which it occopied 2 squares, it will try to take the last one
       const winningLines = lineThatsAre("o", "o", null);
       if (winningLines.length > 0) {
@@ -87,14 +87,14 @@ function App() {
       //call function is assign computer move
       if (randomIndex || randomIndex === 0) putComputerAt(randomIndex);
     }
-  }, [square]);
+  }, [square, winner]);
 
   function handleSquareClick(index: number) {
     //when the left over squares (null) can be completely divided by 2, it means is player's turn
     const isPlayTurn: boolean = square.filter((square) => square !== null).length % 2 === 0;
 
     //when player click the square, show x and update array of square
-    if (isPlayTurn) {
+    if (isPlayTurn && !winner) {
       let newSquare = square;
       newSquare[index] = "x";
       setSquare([...newSquare]);
@@ -109,8 +109,8 @@ function App() {
           <Square key={index} x={square === "x" ? 1 : 0} o={square === "o" ? 1 : 0} onClick={() => handleSquareClick(index)} />
         ))}
       </Board>
-      {winner && winner === "x" && <div className="result win">You won ! </div>}
-      {winner && winner === "o" && <div className="result lose">You lost ! </div>}
+        {winner && winner === "x" && <div className="result win">You won ! </div>}
+        {winner && winner === "o" && <div className="result lose">You lost ! </div>}
     </main>
   );
 }

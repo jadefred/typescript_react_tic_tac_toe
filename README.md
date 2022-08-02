@@ -1,6 +1,6 @@
 # About
 
-This is a Tic Tac Toe app
+This is a single player Tic Tac Toe app, player will play against computer.
 
 # Technologies
 
