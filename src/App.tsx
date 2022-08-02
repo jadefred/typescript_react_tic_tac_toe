@@ -57,8 +57,17 @@ function App() {
       //if computer already has a line which it occopied 2 squares, it will try to take the last one
       const winningLines = lineThatsAre("o", "o", null);
       if (winningLines.length > 0) {
+        //will receive the line gonna win as array, then filter the occupied sqaure
         const winningIndex = winningLines[0].filter((index) => square[index] === null)[0];
         putComputerAt(winningIndex);
+        return;
+      }
+
+      //compuer try to block the player when players has took 2 squares in the line
+      const blockPlayer = lineThatsAre("x", "x", null);
+      if (blockPlayer.length > 0) {
+        const blockIndex = blockPlayer[0].filter((index) => square[index] === null)[0];
+        putComputerAt(blockIndex);
         return;
       }
 
