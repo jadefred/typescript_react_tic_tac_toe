@@ -103,6 +103,7 @@ function App() {
 
   return (
     <main>
+      <h1>Tic Tac Toe</h1>
       <Board>
         {square.map((square, index: number) => (
           <Square key={index} x={square === "x" ? 1 : 0} o={square === "o" ? 1 : 0} onClick={() => handleSquareClick(index)} />
