@@ -120,36 +120,45 @@ function App() {
     }
   }
 
-  function startAgain() {
+  function retry() {
     setSquare(defaultSquare);
     setWinner(null);
   }
 
+  function startOver() {
+    retry();
+    setPlayerWon(0);
+    setComputerWon(0);
+  }
+
   return (
-    <>
-      <main>
-        <div className="title-btn__wrapper">
-          <h1>Tic Tac Toe</h1>
-          <button onClick={startAgain} type="button" className="start-again-btn">
-            Start Again
+    <main>
+      <div className="title-btn__wrapper">
+        <h1>Tic Tac Toe</h1>
+        <div className="start-again-btn__wrapper">
+          <button onClick={retry} type="button" className="start-again-btn">
+            Retry
+          </button>
+          <button onClick={startOver} type="button" className="start-again-btn">
+            Start Over
           </button>
         </div>
+      </div>
 
-        <Board>
-          {square.map((square, index: number) => (
-            <Square key={index} x={square === "x" ? 1 : 0} o={square === "o" ? 1 : 0} onClick={() => handleSquareClick(index)} />
-          ))}
-        </Board>
-        {winner && winner === "x" && <div className="result win">You won ! </div>}
-        {winner && winner === "o" && <div className="result lose">You lost ! </div>}
-        {winner && winner === "tie" && <div className="result tie">Tied ! </div>}
-      </main>
+      <Board>
+        {square.map((square, index: number) => (
+          <Square key={index} x={square === "x" ? 1 : 0} o={square === "o" ? 1 : 0} onClick={() => handleSquareClick(index)} />
+        ))}
+      </Board>
+      {winner && winner === "x" && <div className="result win">You won ! </div>}
+      {winner && winner === "o" && <div className="result lose">You lost ! </div>}
+      {winner && winner === "tie" && <div className="result tie">Tied ! </div>}
 
       <div className="score__wrapper">
         <p>You : {playerWon}</p>
         <p>Computer : {computerWon}</p>
       </div>
-    </>
+    </main>
   );
 }
 

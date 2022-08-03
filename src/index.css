@@ -20,12 +20,20 @@ h1 {
   font-size: 40px;
 }
 
+.start-again-btn__wrapper {
+  display: flex;
+  width: 100%;
+  justify-content: center;
+  column-gap: 2rem;
+}
+
 .start-again-btn {
   border: none;
   background-color: white;
-  padding: 0.5rem 2rem;
+  padding: 0.5rem 1.3rem;
   font-size: 18px;
-  border-radius: 20px;
+  border-radius: 12px;
+  width: 50%;
 }
 
 .board {
@@ -66,12 +74,10 @@ h1 {
 .score__wrapper {
   display: flex;
   justify-content: space-between;
-  width: 55%;
   margin: auto;
   font-size: 30px;
 }
 
 .score__wrapper p {
-  width: 50%;
   text-align: center;
 }
