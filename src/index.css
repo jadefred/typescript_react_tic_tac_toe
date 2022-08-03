@@ -8,8 +8,23 @@ main {
   margin: 50px auto 0;
 }
 
+.title-btn__wrapper {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-bottom: 2rem;
+}
+
 h1 {
   text-align: center;
+  font-size: 40px;
+}
+
+.start-again-btn {
+  border: none;
+  background-color: white;
+  padding: 0.5rem 2rem;
+  font-size: 18px;
 }
 
 .board {

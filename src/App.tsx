@@ -109,9 +109,20 @@ function App() {
     }
   }
 
+  function startAgain() {
+    setSquare(defaultSquare);
+    setWinner(null);
+  }
+
   return (
     <main>
-      <h1>Tic Tac Toe</h1>
+      <div className="title-btn__wrapper">
+        <h1>Tic Tac Toe</h1>
+        <button onClick={startAgain} type="button" className="start-again-btn">
+          Start Again
+        </button>
+      </div>
+
       <Board>
         {square.map((square, index: number) => (
           <Square key={index} x={square === "x" ? 1 : 0} o={square === "o" ? 1 : 0} onClick={() => handleSquareClick(index)} />
