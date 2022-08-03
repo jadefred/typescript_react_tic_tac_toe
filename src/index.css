@@ -1,6 +1,7 @@
 body {
   background-color: #22232e;
   color: white;
+  font-family: "PT Serif", serif;
 }
 
 main {
@@ -17,7 +18,8 @@ main {
 
 h1 {
   text-align: center;
-  font-size: 40px;
+  font-size: 50px;
+  font-family: "Lobster", cursive;
 }
 
 .start-again-btn__wrapper {
@@ -34,6 +36,8 @@ h1 {
   font-size: 18px;
   border-radius: 12px;
   width: 50%;
+  font-family: "PT Serif", serif;
+  color: #22232e;
 }
 
 .board {

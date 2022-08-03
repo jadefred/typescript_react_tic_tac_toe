@@ -108,7 +108,7 @@ function App() {
     }
   }, [square, winner]);
 
-  function handleSquareClick(index: number) {
+  function handleSquareClick(index: number):void {
     //when the left over squares (null) can be completely divided by 2, it means is player's turn
     const isPlayTurn: boolean = square.filter((square) => square !== null).length % 2 === 0;
 
@@ -120,12 +120,12 @@ function App() {
     }
   }
 
-  function retry() {
+  function retry():void {
     setSquare(defaultSquare);
     setWinner(null);
   }
 
-  function startOver() {
+  function startOver():void {
     retry();
     setPlayerWon(0);
     setComputerWon(0);

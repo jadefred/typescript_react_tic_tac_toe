@@ -1,6 +1,7 @@
 # About
 
-This is a single player Tic Tac Toe app, player will play against computer.
+This is a single player Tic-Tac-Toe app which user will play against computer, the setting of computer will try to block the player's move on the board and aim to win.
+This app will record the score of player and computer, user could press the retry button to reset the game or start over button to reset the game and score.
 
 # Technologies
 
