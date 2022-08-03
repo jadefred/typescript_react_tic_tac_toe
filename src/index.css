@@ -25,6 +25,7 @@ h1 {
   background-color: white;
   padding: 0.5rem 2rem;
   font-size: 18px;
+  border-radius: 20px;
 }
 
 .board {
@@ -60,4 +61,17 @@ h1 {
 
 .tie {
   background-color: #f09148;
+}
+
+.score__wrapper {
+  display: flex;
+  justify-content: space-between;
+  width: 55%;
+  margin: auto;
+  font-size: 30px;
+}
+
+.score__wrapper p {
+  width: 50%;
+  text-align: center;
 }

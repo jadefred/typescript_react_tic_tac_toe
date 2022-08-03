@@ -19,6 +19,17 @@ const lines: number[][] = [
 function App() {
   const [square, setSquare] = useState(defaultSquare);
   const [winner, setWinner] = useState<string | null>(null);
+  const [playerWon, setPlayerWon] = useState<number>(0);
+  const [computerWon, setComputerWon] = useState<number>(0);
+
+  useEffect(() => {
+    if (winner === "x") {
+      setPlayerWon((prev) => prev + 1);
+    }
+    if (winner === "o") {
+      setComputerWon((prev) => prev + 1);
+    }
+  }, [winner]);
 
   useEffect(() => {
     //take x / o / null as arguments
@@ -115,23 +126,30 @@ function App() {
   }
 
   return (
-    <main>
-      <div className="title-btn__wrapper">
-        <h1>Tic Tac Toe</h1>
-        <button onClick={startAgain} type="button" className="start-again-btn">
-          Start Again
-        </button>
-      </div>
+    <>
+      <main>
+        <div className="title-btn__wrapper">
+          <h1>Tic Tac Toe</h1>
+          <button onClick={startAgain} type="button" className="start-again-btn">
+            Start Again
+          </button>
+        </div>
 
-      <Board>
-        {square.map((square, index: number) => (
-          <Square key={index} x={square === "x" ? 1 : 0} o={square === "o" ? 1 : 0} onClick={() => handleSquareClick(index)} />
-        ))}
-      </Board>
-      {winner && winner === "x" && <div className="result win">You won ! </div>}
-      {winner && winner === "o" && <div className="result lose">You lost ! </div>}
-      {winner && winner === "tie" && <div className="result tie">Tied ! </div>}
-    </main>
+        <Board>
+          {square.map((square, index: number) => (
+            <Square key={index} x={square === "x" ? 1 : 0} o={square === "o" ? 1 : 0} onClick={() => handleSquareClick(index)} />
+          ))}
+        </Board>
+        {winner && winner === "x" && <div className="result win">You won ! </div>}
+        {winner && winner === "o" && <div className="result lose">You lost ! </div>}
+        {winner && winner === "tie" && <div className="result tie">Tied ! </div>}
+      </main>
+
+      <div className="score__wrapper">
+        <p>You : {playerWon}</p>
+        <p>Computer : {computerWon}</p>
+      </div>
+    </>
   );
 }
 
