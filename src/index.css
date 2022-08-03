@@ -1,7 +1,7 @@
 body {
   background-color: #22232e;
   color: white;
-  font-family: "PT Serif", serif;
+  font-family: "Overpass", sans-serif;
 }
 
 main {
@@ -36,7 +36,8 @@ h1 {
   font-size: 18px;
   border-radius: 12px;
   width: 50%;
-  font-family: "PT Serif", serif;
+  font-family: "Overpass", sans-serif;
+  font-weight: 700;
   color: #22232e;
 }
 

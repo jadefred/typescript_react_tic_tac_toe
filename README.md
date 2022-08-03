@@ -8,6 +8,7 @@ This app will record the score of player and computer, user could press the retr
 - Using **TypeScript** & **React** to manipulate DOM
 
 # How to use
+
 This repo is bootstrapped with `create-react-app`. In the project directory, you can run:
 
 ```
@@ -15,3 +16,5 @@ npm start
 ```
 
 Open [http://localhost:3000](http://localhost:3000) to view it in your browser. The page will reload when you make changes.
+
+[Click here](https://jadefred.github.io/typescript_react_tic_tac_toe/) to view the deployment
